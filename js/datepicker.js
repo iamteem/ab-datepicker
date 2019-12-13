@@ -2226,38 +2226,41 @@
 	 */
 	Datepicker.prototype.updateLinked = function(date) {
 		if (this.options.previous !== null && this.options.previous.val() !== '') {
-			var previousDate = this.options.previous.datepicker('getDate');
+      var previousDatepicker = this.options.previous.data('ab.datepicker');
+			var previousDate = previousDatepicker.getDate();
 			if (this.options.allowSameDate) {
 				if (previousDate > date) {
-					var previousVal = this.formatDate(date, this.options.previous.datepicker('outputFormat'));
+					var previousVal = this.formatDate(date, previousDatepicker.outputFormat());
 					this.options.previous.val(previousVal);
 				}
 			} else {
 				if (previousDate >= date) {
-					var previousVal = this.formatDate(new Date(date.getTime() - 60*60*24*1000), this.options.previous.datepicker('outputFormat'));
+					var previousVal = this.formatDate(new Date(date.getTime() - 60*60*24*1000), previousDatepicker.outputFormat());
 					this.options.previous.val(previousVal);
 				}
 			}
 		}
 		if (this.options.next !== null && this.options.next.val() !== '') {
-			var nextDate = this.options.next.datepicker('getDate');
+      var nextDatepicker = this.options.next.data('ab.datepicker');
+      var nextDate = nextDatepicker.getDate();
 			if (this.options.allowSameDate) {
 				if (nextDate < date) {
-					var nextVal = this.formatDate(date, this.options.next.datepicker('outputFormat'));
+					var nextVal = this.formatDate(date, nextDatepicker.outputFormat());
 					this.options.next.val(nextVal);
 				}
 			} else {
 				if (nextDate <= date) {
-					var nextVal = this.formatDate(new Date(date.getTime() + 60*60*24*1000), this.options.next.datepicker('outputFormat'));
+					var nextVal = this.formatDate(new Date(date.getTime() + 60*60*24*1000), nextDatepicker.outputFormat());
 					this.options.next.val(nextVal);
 				}
 			}
 		}
 		if (this.options.next !== null) {
+      var nextDatepicker = this.options.next.data('ab.datepicker');
 			if (this.options.allowSameDate) {
-				this.options.next.datepicker('min', date);
+				nextDatepicker.min(date);
 			} else {
-				this.options.next.datepicker('min', new Date(date.getTime() + 60*60*24*1000));
+				nextDatepicker.min(new Date(date.getTime() + 60*60*24*1000));
 			}
 		}
 	} // end updateLinked()

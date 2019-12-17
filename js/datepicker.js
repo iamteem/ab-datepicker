@@ -386,7 +386,7 @@
 			this.options.next = null;
 		}
 		this.id = this.$target.attr('id') || 'datepicker-' + Math.floor(Math.random() * 100000);
-		var calendar = this.options.markup == 'bootstrap3' ? datepickerCalendar3(this.options.calendarIconMarkup).join("") : datepickerCalendar4.join("");
+		var calendar = this.options.markup == 'bootstrap3' ? datepickerCalendar3(this.options.buttonsMarkup).join("") : datepickerCalendar4.join("");
 		calendar = calendar.replace(/CALENDARID/g, this.id + '');
 
 		// complete the target textbox if any
@@ -402,7 +402,7 @@
 			this.$target.attr('placeholder', this.options.inputFormat[0]);
 		}
 
-		var button = this.options.markup == 'bootstrap3' ? datepickerButton3(this.options.buttonsMarkup).join("") : datepickerButton4.join("");
+		var button = this.options.markup == 'bootstrap3' ? datepickerButton3(this.options.calendarIconMarkup).join("") : datepickerButton4.join("");
 		button = button.replace(/CALENDARID/g, this.id + '');
 		this.$button = $(button);
 		this.$button.addClass(this.options.theme);

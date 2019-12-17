@@ -1261,7 +1261,7 @@
 		// bind target handlers
 		this.$target.change(function(e) {
 			var date = self.parseDate($(this).val());
-			self.updateLinked(date);
+      self.updateLinked(date);
 		});
 	} // end bindHandlers();
 
@@ -2243,6 +2243,9 @@
 	 *	@return N/A
 	 */
 	Datepicker.prototype.updateLinked = function(date) {
+    if (date == null)
+      return;
+
 		if (this.options.previous !== null && this.options.previous.val() !== '') {
       var previousDatepicker = this.options.previous.data('ab.datepicker');
 			var previousDate = previousDatepicker.getDate();

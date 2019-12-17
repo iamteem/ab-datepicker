@@ -233,49 +233,67 @@
 }(function($, undefined){
 	'use strict';
 
-	var datepickerButton3 = [
+	var datepickerButton3 = function(calendarIconMarkup) {
+    return [
 		'<a class="datepicker-button bootstrap3 input-group-addon btn" role="button" aria-haspopup="true" tabindex="0" aria-labelledby="datepicker-bn-open-label-CALENDARID">',
-		'	<span class="glyphicon glyphicon-calendar" title="Select Date..."></span>',
+		  (calendarIconMarkup ? calendarIconMarkup : '	<span class="glyphicon glyphicon-calendar" title="Select Date..."></span>'),
 		'</a>'
-	];
-	var datepickerCalendar3 = [
-		'<div class="datepicker-calendar bootstrap3" id="datepicker-calendar-CALENDARID" aria-hidden="false">',
-		'	<div class="datepicker-month-wrap">',
-		'		<div class="datepicker-button datepicker-month-fast-next pull-right" role="button" aria-labelledby="datepicker-bn-fast-next-label-CALENDARID" tabindex="0"><span class="glyphicon glyphicon-forward"></span></div>',
-		'		<div class="datepicker-button datepicker-month-next pull-right" role="button" aria-labelledby="datepicker-bn-next-label-CALENDARID" tabindex="0"><span class="glyphicon glyphicon-triangle-right"></span></div>',
-		'		<div class="datepicker-button datepicker-month-fast-prev pull-left" role="button" aria-labelledby="datepicker-bn-fast-prev-label-CALENDARID" tabindex="0"><span class="glyphicon glyphicon-backward"></span></div>',
-		'		<div class="datepicker-button datepicker-month-prev pull-left" role="button" aria-labelledby="datepicker-bn-prev-label-CALENDARID" tabindex="0"><span class="glyphicon glyphicon-triangle-left"></span></div>',
-		'		<div id="datepicker-month-CALENDARID" class="datepicker-button datepicker-month" tabindex="0" role="heading" aria-live="assertive" aria-atomic="true" title="Click or press the Enter key or the spacebar to change the month">July 2015</div>',
-		'	</div>',
-		'	<table class="datepicker-grid" role="grid" aria-readonly="true" aria-activedescendant="datepicker-err-msg-CALENDARID" aria-labelledby="datepicker-month-CALENDARID" tabindex="0">',
-		'		<thead role="presentation">',
-		'			<tr class="datepicker-weekdays" role="row">',
-		'				<th scope="col" id="day0-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Sunday"><abbr title="Sunday">Su</abbr></th>',
-		'				<th scope="col" id="day1-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Monday"><abbr title="Monday">Mo</abbr></th>',
-		'				<th scope="col" id="day2-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Tuesday"><abbr title="Tuesday">Tu</abbr></th>',
-		'				<th scope="col" id="day3-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Wednesday"><abbr title="Wednesday">We</abbr></th>',
-		'				<th scope="col" id="day4-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Thursday"><abbr title="Thursday">Th</abbr></th>',
-		'				<th scope="col" id="day5-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Friday"><abbr title="Friday">Fr</abbr></th>',
-		'				<th scope="col" id="day6-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Saturday"><abbr title="Saturday">Sa</abbr></th>',
-		'			</tr>',
-		'		</thead>',
-		'		<tbody role="presentation">',
-		'			<tr>',
-		'				<td id="datepicker-err-msg-CALENDARID" colspan="7">Javascript must be enabled</td>',
-		'			</tr>',
-		'		</tbody>',
-		'	</table>',
-		'	<div class="datepicker-close-wrap">',
-		'		<button class="datepicker-button datepicker-close" id="datepicker-close-CALENDARID" aria-labelledby="datepicker-bn-close-label-CALENDARID">Close</button>',
-		'	</div>',
-		'	<div id="datepicker-bn-open-label-CALENDARID" class="datepicker-bn-open-label offscreen">Click or press the Enter key or the spacebar to open the calendar</div>',
-		'	<div id="datepicker-bn-prev-label-CALENDARID" class="datepicker-bn-prev-label offscreen">Go to previous month</div>',
-		'	<div id="datepicker-bn-next-label-CALENDARID" class="datepicker-bn-next-label offscreen">Go to next month</div>',
-		'	<div id="datepicker-bn-fast-prev-label-CALENDARID" class="datepicker-bn-fast-prev-label offscreen">Go to previous year</div>',
-		'	<div id="datepicker-bn-fast-next-label-CALENDARID" class="datepicker-bn-fast-next-label offscreen">Go to next year</div>',
-		'	<div id="datepicker-bn-close-label-CALENDARID" class="datepicker-bn-close-label offscreen">Close the date picker</div>',
-		'</div>'
-	];
+    ];
+  };
+
+	var datepickerCalendar3 = function(markupOverrides = {}) {
+    var forward = markupOverrides.forward || '<span class="glyphicon glyphicon-forward"></span>';
+    var next = markupOverrides.next || '<span class="glyphicon glyphicon-triangle-right"></span>';
+    var backward = markupOverrides.backward || '<span class="glyphicon glyphicon-backward"></span>';
+    var previous = markupOverrides.previous || '<span class="glyphicon glyphicon-triangle-left"></span>';
+
+    return [
+      '<div class="datepicker-calendar bootstrap3" id="datepicker-calendar-CALENDARID" aria-hidden="false">',
+      '	<div class="datepicker-month-wrap">',
+      '		<div class="datepicker-button datepicker-month-fast-next pull-right" role="button" aria-labelledby="datepicker-bn-fast-next-label-CALENDARID" tabindex="0">',
+      forward,
+      '   </div>',
+      '		<div class="datepicker-button datepicker-month-next pull-right" role="button" aria-labelledby="datepicker-bn-next-label-CALENDARID" tabindex="0">',
+      next,
+      '   </div>',
+      '		<div class="datepicker-button datepicker-month-fast-prev pull-left" role="button" aria-labelledby="datepicker-bn-fast-prev-label-CALENDARID" tabindex="0">',
+      backward,
+      '   </div>',
+      '		<div class="datepicker-button datepicker-month-prev pull-left" role="button" aria-labelledby="datepicker-bn-prev-label-CALENDARID" tabindex="0">',
+      previous,
+      '   </div>',
+      '		<div id="datepicker-month-CALENDARID" class="datepicker-button datepicker-month" tabindex="0" role="heading" aria-live="assertive" aria-atomic="true" title="Click or press the Enter key or the spacebar to change the month">July 2015</div>',
+      '	</div>',
+      '	<table class="datepicker-grid" role="grid" aria-readonly="true" aria-activedescendant="datepicker-err-msg-CALENDARID" aria-labelledby="datepicker-month-CALENDARID" tabindex="0">',
+      '		<thead role="presentation">',
+      '			<tr class="datepicker-weekdays" role="row">',
+      '				<th scope="col" id="day0-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Sunday"><abbr title="Sunday">Su</abbr></th>',
+      '				<th scope="col" id="day1-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Monday"><abbr title="Monday">Mo</abbr></th>',
+      '				<th scope="col" id="day2-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Tuesday"><abbr title="Tuesday">Tu</abbr></th>',
+      '				<th scope="col" id="day3-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Wednesday"><abbr title="Wednesday">We</abbr></th>',
+      '				<th scope="col" id="day4-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Thursday"><abbr title="Thursday">Th</abbr></th>',
+      '				<th scope="col" id="day5-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Friday"><abbr title="Friday">Fr</abbr></th>',
+      '				<th scope="col" id="day6-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Saturday"><abbr title="Saturday">Sa</abbr></th>',
+      '			</tr>',
+      '		</thead>',
+      '		<tbody role="presentation">',
+      '			<tr>',
+      '				<td id="datepicker-err-msg-CALENDARID" colspan="7">Javascript must be enabled</td>',
+      '			</tr>',
+      '		</tbody>',
+      '	</table>',
+      '	<div class="datepicker-close-wrap">',
+      '		<button class="datepicker-button datepicker-close" id="datepicker-close-CALENDARID" aria-labelledby="datepicker-bn-close-label-CALENDARID">Close</button>',
+      '	</div>',
+      '	<div id="datepicker-bn-open-label-CALENDARID" class="datepicker-bn-open-label offscreen">Click or press the Enter key or the spacebar to open the calendar</div>',
+      '	<div id="datepicker-bn-prev-label-CALENDARID" class="datepicker-bn-prev-label offscreen">Go to previous month</div>',
+      '	<div id="datepicker-bn-next-label-CALENDARID" class="datepicker-bn-next-label offscreen">Go to next month</div>',
+      '	<div id="datepicker-bn-fast-prev-label-CALENDARID" class="datepicker-bn-fast-prev-label offscreen">Go to previous year</div>',
+      '	<div id="datepicker-bn-fast-next-label-CALENDARID" class="datepicker-bn-fast-next-label offscreen">Go to next year</div>',
+      '	<div id="datepicker-bn-close-label-CALENDARID" class="datepicker-bn-close-label offscreen">Close the date picker</div>',
+      '</div>'
+    ];
+  };
 
 	var datepickerButton4 = [
 		'<a class="datepicker-button bootstrap4 input-group-append" role="button" aria-haspopup="true" tabindex="0" aria-labelledby="datepicker-bn-open-label-CALENDARID">',
@@ -368,7 +386,7 @@
 			this.options.next = null;
 		}
 		this.id = this.$target.attr('id') || 'datepicker-' + Math.floor(Math.random() * 100000);
-		var calendar = this.options.markup == 'bootstrap3' ? datepickerCalendar3.join("") : datepickerCalendar4.join("");
+		var calendar = this.options.markup == 'bootstrap3' ? datepickerCalendar3(this.options.calendarIconMarkup).join("") : datepickerCalendar4.join("");
 		calendar = calendar.replace(/CALENDARID/g, this.id + '');
 
 		// complete the target textbox if any
@@ -384,7 +402,7 @@
 			this.$target.attr('placeholder', this.options.inputFormat[0]);
 		}
 
-		var button = this.options.markup == 'bootstrap3' ? datepickerButton3.join("") : datepickerButton4.join("");
+		var button = this.options.markup == 'bootstrap3' ? datepickerButton3(this.options.buttonsMarkup).join("") : datepickerButton4.join("");
 		button = button.replace(/CALENDARID/g, this.id + '');
 		this.$button = $(button);
 		this.$button.addClass(this.options.theme);

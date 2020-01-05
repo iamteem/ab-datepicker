@@ -74,7 +74,7 @@ Add this code to the end of your document:
 ```javascript
     <script type="text/javascript">
     $(document).ready(function() {
-    	$('.date').datepicker();
+    	$('.date').abDatepicker();
     });
     </script>
 ```
@@ -94,7 +94,7 @@ and give some options to the datepicker. See [Configuration options](#configurat
 ```javascript
     <script type="text/javascript">
     $(document).ready(function() {
-    	$('.date').datepicker({
+    	$('.date').abDatepicker({
 			firstDayOfWeek: 1, // The first day of week is Monday
 			weekDayFormat: 'narrow', // Only first letter for the weekday names
 			inputFormat: 'd/M/y',
@@ -159,102 +159,102 @@ and give some options to the datepicker. See [Configuration options](#configurat
 ## Methods
 ### datesDisabled
 ```javascript
-$('your date selector').datepicker('datesDisabled', dates);
+$('your date selector').abDatepicker('datesDisabled', dates);
 ```
 Sets a specific date or an array of dates to be disabled. The dates are Date objects or strings.
 ### daysOfWeekDisabled
 ```javascript
-$('your date selector').datepicker('daysOfWeekDisabled', value);
+$('your date selector').abDatepicker('daysOfWeekDisabled', value);
 ```
 where value (type: array of number) is the list of days of the week that should be disabled.
 ### disable
 ```javascript
-$('your date selector').datepicker('disable');
+$('your date selector').abDatepicker('disable');
 ```
 Disable the datepicker. This method has no effect on an inline datepicker. 
 ### enable
 ```javascript
-$('your date selector').datepicker('enable');
+$('your date selector').abDatepicker('enable');
 ```
 Enable the datepicker.
 ### firstDayOfWeek
 ```javascript
-$('your date selector').datepicker('firstDayOfWeek', value);
+$('your date selector').abDatepicker('firstDayOfWeek', value);
 ```
 where value (type: integer) is the day of week (0: Sunday, 1: Monday, 2: Tuesday, ...)
 ### getDate
 ```javascript
-$('your date selector').datepicker('getDate');
+$('your date selector').abDatepicker('getDate');
 ```
 Get the current Datepicker date object
 ### hide
 ```javascript
-$('your date selector').datepicker('hide');
+$('your date selector').abDatepicker('hide');
 ```
 hide the calendar portion of the datepicker
 ### inline
 ```javascript
-$('your date selector').datepicker('inline', value);
+$('your date selector').abDatepicker('inline', value);
 ```
 Display the datepicker inline inside a given div. value can be the id of a div, a jQuery object of a div or false.
 ### inputFormat
 ```javascript
-$('your date selector').datepicker('inputFormat', formats);
+$('your date selector').abDatepicker('inputFormat', formats);
 ```
 where formats (type: array of string) contains the acceptable input formats according to [CLDR Date Time patterns](http://cldr.unicode.org/translation/date-time)
 ### max
 ```javascript
-$('your date selector').datepicker('max', date);
+$('your date selector').abDatepicker('max', date);
 ```
 Define the biggest date the user can enter. The value of "date" (type: string) must conform to one of the formats defined with the "inputFormat" option
 ### min
 ```javascript
-$('your date selector').datepicker('min', date);
+$('your date selector').abDatepicker('min', date);
 ```
 Define the smallest date the user can enter. The value of "date" (type: string) must conform to one of the formats defined with the "inputFormat" option.
 ### next
 ```javascript
-$('your date selector').datepicker('next', selector);
+$('your date selector').abDatepicker('next', selector);
 ```
 Define the date as the start date of a period. The value of "selector" (type: string or JQuery object) refers to the input that represents the end date of the period.
 ### previous
 ```javascript
-$('your date selector').datepicker('previous', selector);
+$('your date selector').abDatepicker('previous', selector);
 ```
 Define the date as the end date of a period. The value of "selector" (type: string or JQuery object) refers to the input that represents the start date of the period.
 ### modal
 ```javascript
-$('your date selector').datepicker('modal', bool);
+$('your date selector').abDatepicker('modal', bool);
 ```
 Defines the opening mode (modal or not) of the calendar portion of the datepicker. bool can be true or false.
 ### outputFormat
 ```javascript
-$('your date selector').datepicker('outputFormat', format);
+$('your date selector').abDatepicker('outputFormat', format);
 ```
 where format (type: string) contains the output format according to [CLDR Date Time patterns](http://cldr.unicode.org/translation/date-time)
 ### setDate
 ```javascript
-$('your date selector').datepicker('setDate', date);
+$('your date selector').abDatepicker('setDate', date);
 ```
 Returns the internal date object of the datepicker
 ### show
 ```javascript
-$('your date selector').datepicker('show');
+$('your date selector').abDatepicker('show');
 ```
 show the calendar portion of the datepicker
 ### startview
 ```javascript
-$('your date selector').datepicker('startview', view);
+$('your date selector').abDatepicker('startview', view);
 ```
 where view (type: string|int) is the value of new start view: 'days', 'months', 'years', 0 for days, 1 for months and 2 for years
 ### theme
 ```javascript
-$('your date selector').datepicker('theme', name);
+$('your date selector').abDatepicker('theme', name);
 ```
 where name (type: string) contains the name of your theme
 ### weekDayFormat
 ```javascript
-$('your date selector').datepicker('weekDayFormat', value);
+$('your date selector').abDatepicker('weekDayFormat', value);
 ```
 where value (type: string) is one of this value : 'short' (first letter) or 'narrow' (first two letters)
 
@@ -352,7 +352,7 @@ div.datepicker-calendar.default button.datepicker-close {
  3. Add the CSS file to your page
  4. call the datepicker with the 'theme' option as follows :
 ```javascript
-$('your date selector').datepicker({
+$('your date selector').abDatepicker({
 	............
 	theme: 'the name of your theme',
 	........

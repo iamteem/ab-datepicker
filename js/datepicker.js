@@ -241,7 +241,9 @@
     ];
   };
 
-	var datepickerCalendar3 = function(markupOverrides = {}) {
+	var datepickerCalendar3 = function(markupOverrides) {
+    markupOverrides = markupOverrides || {};
+
     var forward = markupOverrides.forward || '<span class="glyphicon glyphicon-forward"></span>';
     var next = markupOverrides.next || '<span class="glyphicon glyphicon-triangle-right"></span>';
     var backward = markupOverrides.backward || '<span class="glyphicon glyphicon-backward"></span>';
@@ -3257,9 +3259,9 @@
 	// DATEPICKER PLUGIN DEFINITION
 	// ==========================
 
-	var old = $.fn.datepicker
+	var old = $.fn.abDatepicker;
 
-	$.fn.datepicker = function (option, value) {
+	$.fn.abDatepicker = function (option, value) {
 		if (typeof option == 'string' && $(this).length == 1) {
 			var data = $(this).eq(0).data('ab.datepicker');
 			if (data) {
@@ -3280,16 +3282,15 @@
 				if (typeof option == 'string') data[option](value);
 			});
 		}
-	}
+	};
 
-	$.fn.datepicker.Constructor = Datepicker
+	$.fn.abDatepicker.Constructor = Datepicker;
 
 	// DATEPICKER NO CONFLICT
 	// ====================
 
-	$.fn.datepicker.noConflict = function () {
-		$.fn.datepicker = old
-		return this
-	}
-
+	$.fn.abDatepicker.noConflict = function () {
+		$.fn.abDatepicker = old;
+		return this;
+	};
 }));
